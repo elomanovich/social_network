@@ -1,15 +1,15 @@
 import React from 'react';
 import s from './Profile.module.css';
 import MyPosts from "./MyPosts/MyPosts";
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = () => (
-  <div>
-    <div>
-      <img src="https://cache.desktopnexus.com/thumbseg/2359/2359058-bigthumbnail.jpg" alt="photo" />
-    </div>
-    <div>ava + description</div>
-      <MyPosts/>
-  </div>
-);
+const Profile = () => {
+    return (
+        <div>
+            <ProfileInfo/>
+            <MyPosts/>
+        </div>
+    )
+};
 
 export default Profile;

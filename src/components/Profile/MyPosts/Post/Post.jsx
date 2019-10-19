@@ -8,7 +8,7 @@ const Post = (props) => {
                 src='https://i.pinimg.com/736x/22/f0/65/22f065f85d994561c85443ac9eb0587e--police-sunglasses-sunglasses-women.jpg'/>
             post 1
             <div>
-                <span>like</span> {props.currentLike}
+                <span>{props.message}</span> {props.currentLike}
             </div>
         </div>
     )
