@@ -3,6 +3,9 @@ import s from './MyPosts.module.css';
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
+    
+    let posts = props.postData.map(p => <Post currentLike={p.currentLike} message={p.message}/>);
+
     return (
         <div className={s.postsBlock}>
             <h3>My post</h3>
@@ -13,10 +16,7 @@ const MyPosts = (props) => {
                 <button>Add post</button>
             </div>
             <div className={s.posts}>
-                <Post currentLike='45' message="hello"/>
-                <Post/>
-                <Post/>
-                <Post/>
+               {posts}
             </div>
         </div>
     )
