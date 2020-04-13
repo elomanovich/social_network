@@ -6,7 +6,7 @@ import sidebarReducer from "./sidebar-reducer";
 let store = {
     _state: {
         profilePage: {
-            postData: [
+            posts: [
                 {id: 1, message: 'Hello', currentLike: 12},
                 {id: 2, message: "Yo", currentLike: 11}
             ],
