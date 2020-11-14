@@ -10,40 +10,43 @@ const instance = axios.create({
     }
 })
 
+export const usersAPI = {
+    getUsers(currentPage = 1, pageSize = 10) {
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+            .then(response => {
+                return response.data;
+            });
+    },
+    follow(userId) {
+        return instance.post(`follow/${userId}`)
 
-export const getUsers = (currentPage = 1, pageSize = 10) => {
-    return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-        .then(response => {
-            return response.data;
-        })
-};
+    },
+    unfollow(userId) {
+        return instance.delete(`follow/${userId}`)
 
-export const getProfile = (userId) => {
-    return instance.get(`profile/` + userId)
-        .then(response => {
-            return response.data;
-        })
-};
-
-export const getAuth = () => {
-    return instance.get(baseUrl + `auth/me`)
-        .then(response => {
-            return response.data
-        })
-
+    },
+    getProfile(userId) {
+        console.warn("Absolute method. Please use profileAPI method")
+        return profileAPI.getProfile(userId)
+    }
 }
 
-export const deleteFollowed = (u) => {
-    return  instance.delete(`follow/${u.id}`)
-        .then(response => {
-            return response.data
-        })
-};
+export const profileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/` + userId)
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/` + userId)
+    },
+    updateStatus(status) {
+        return instance.put('profile/status', {status:status})
+    }
+}
 
-export const postFollowed = (u) => {
-    return  instance.post(`follow/${u.id}`)
-        .then(response => {
-            return response.data
-        })
-};
+export const authAPI = {
+    me() {
+        return instance.get(`auth/me`)
+    }
+}
+
 
